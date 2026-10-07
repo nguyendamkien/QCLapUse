@@ -1,0 +1,7 @@
+# Thư viện cho auto label (tuỳ chọn, backend vẫn chạy khi chưa cài).
+# Máy không có GPU NVIDIA thì cài torch bản CPU trước cho nhẹ:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements-autolabel.txt
+# Lưu ý: ultralytics dùng giấy phép AGPL-3.0 (xem doc/auto-label.md).
+ultralytics>=8.4
+numpy

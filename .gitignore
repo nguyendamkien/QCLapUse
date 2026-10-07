@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+
+# Node
+node_modules/
+dist/
+frontend/.env.local
+
+# Dữ liệu: video tải lên, index.json và mọi thư mục data
+backend/storage/
+data/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm

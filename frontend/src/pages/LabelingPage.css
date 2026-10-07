@@ -1,0 +1,1276 @@
+.labeling-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 290px;
+  gap: 1rem;
+  align-items: start;
+}
+
+.labeling-layout.list-hidden {
+  grid-template-columns: minmax(0, 1fr) 290px;
+}
+
+/* Khi tạm ẩn cột bên phải */
+.labeling-layout.no-side {
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.labeling-layout.no-side.list-hidden {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.labeling-videos[hidden] {
+  display: none;
+}
+
+.panel-header {
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-header-project {
+  padding: 0.6rem 0.6rem;
+}
+
+.panel-header-project select {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid var(--sidebar-active);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.label-progress {
+  margin-top: 0.55rem;
+}
+
+.label-progress-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #5f7f7c;
+  font-variant-numeric: tabular-nums;
+}
+
+.label-progress-track {
+  height: 8px;
+  overflow: hidden;
+  background: #e2efed;
+  border-radius: 4px;
+}
+
+.label-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--sidebar-active);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.panel-empty {
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  color: #5f7f7c;
+}
+
+.panel-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #be123c;
+}
+
+/* ---------- Danh sách video ---------- */
+.card.labeling-videos {
+  padding: 0;
+  overflow: hidden;
+}
+
+.labeling-videos .panel-empty,
+.labeling-videos .panel-error {
+  padding: 0.75rem 1rem;
+}
+
+.video-list {
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.video-item:hover {
+  background: var(--content-bg);
+}
+
+.video-item.active {
+  background: #ccfbf1;
+  box-shadow: inset 3px 0 0 var(--sidebar-active);
+}
+
+.video-item-name {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.video-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #5f7f7c;
+}
+
+.chip {
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.chip-done {
+  background: #ccfbf1;
+  color: #115e59;
+}
+
+.chip-muted {
+  background: #eef2f1;
+  color: #475569;
+}
+
+/* ---------- Vùng video ---------- */
+.labeling-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.labeling-placeholder {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #5f7f7c;
+}
+
+.labeling-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tool-button.active {
+  color: #fff;
+  background: var(--sidebar-bg);
+  border-color: var(--sidebar-bg);
+}
+
+.tool-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.case-row select {
+  height: 34px;
+  padding: 0 0.5rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+}
+
+.video-stage-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  background: #0b2624;
+  border-radius: 12px;
+}
+
+.video-stage {
+  position: relative;
+  max-width: 100%;
+}
+
+.video-stage video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.annotation-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.annotation-canvas.disabled {
+  cursor: default;
+}
+
+.annotation-box {
+  cursor: move;
+}
+
+.annotation-canvas.disabled .annotation-box {
+  cursor: default;
+}
+
+.annotation-tag {
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.7);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.annotation-handle {
+  fill: #fff;
+  stroke: #0b2624;
+  stroke-width: 1.5;
+}
+
+.handle-nw,
+.handle-se {
+  cursor: nwse-resize;
+}
+
+.handle-ne,
+.handle-sw {
+  cursor: nesw-resize;
+}
+
+.annotation-draft {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  pointer-events: none;
+}
+
+/* ---------- Thanh phát ---------- */
+.playback {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.icon-button.play {
+  color: var(--sidebar-bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.frame-info {
+  flex-shrink: 0;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+  color: #5f7f7c;
+}
+
+/* ---------- Bảng bên phải ---------- */
+.card.labeling-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.side-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.side-section + .side-section {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.side-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.side-count {
+  padding: 0 0.45rem;
+  font-size: 0.75rem;
+  background: var(--content-bg);
+  border-radius: 999px;
+}
+
+.box-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 34vh;
+  overflow-y: auto;
+}
+
+.box-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.box-item.selected {
+  border-color: var(--sidebar-active);
+  background: #f0fdfa;
+}
+
+.box-item-head {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.box-item-head strong {
+  flex: 1;
+  font-weight: 600;
+}
+
+.side-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.case-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.case-row select {
+  flex: 1;
+  min-width: 0;
+}
+
+.save-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  color: #115e59;
+  background: #f0fdfa;
+  border-radius: 8px;
+}
+
+.save-status.dirty,
+.save-status.saving {
+  color: #92400e;
+  background: #fffbeb;
+}
+
+.save-status.error {
+  color: #be123c;
+  background: #fff5f6;
+}
+
+.shortcuts {
+  font-size: 0.8rem;
+  color: #5f7f7c;
+}
+
+.shortcuts summary {
+  cursor: pointer;
+}
+
+.shortcuts dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.75rem;
+  margin: 0.5rem 0 0;
+}
+
+.shortcuts dt {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  color: var(--text);
+}
+
+.shortcuts dd {
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .labeling-layout {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  .card.labeling-side {
+    grid-column: 1 / -1;
+  }
+
+  .labeling-layout.list-hidden {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .labeling-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .labeling-layout.no-side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .video-list {
+    max-height: 30vh;
+  }
+}
+
+/* ---------- Người đang chọn ---------- */
+.track-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-right: auto;
+}
+
+.track-actions-name {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.labeling-toolbar .save-status {
+  margin-left: auto;
+}
+
+.draw-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #5f7f7c;
+}
+
+.draw-hint.warning {
+  color: #92400e;
+}
+
+.box-item-detail {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+  color: #5f7f7c;
+}
+
+/* ---------- Thanh trượt frame ---------- */
+.scrubber {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.scrubber-bar {
+  position: relative;
+  overflow: hidden;
+  transition: height 0.15s;
+  background: #dfeeec;
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+.scrubber-segment {
+  position: absolute;
+  border-radius: 3px;
+  opacity: 0.75;
+}
+
+.scrubber-segment.selected {
+  opacity: 1;
+  box-shadow: inset 0 0 0 2px rgba(4, 47, 46, 0.45);
+}
+
+/* Đoạn đang đánh dấu bằng Space: sọc chạy để phân biệt với đoạn đã lưu */
+.scrubber-recording {
+  position: absolute;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--recording-color),
+    var(--recording-color) 8px,
+    rgba(255, 255, 255, 0.55) 8px,
+    rgba(255, 255, 255, 0.55) 14px
+  );
+  background-size: 40px 40px;
+  animation: recording-stripes 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes recording-stripes {
+  to {
+    background-position: 40px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrubber-recording {
+    animation: none;
+  }
+}
+
+.scrubber-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  margin-left: -1.5px;
+  background: #be123c;
+  pointer-events: none;
+}
+
+.scrubber-playhead::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -5px;
+  border: 6.5px solid transparent;
+  border-top: 7px solid #be123c;
+}
+
+.scrubber-ticks {
+  position: relative;
+  height: 14px;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.7rem;
+  color: #5f7f7c;
+}
+
+.scrubber-ticks span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.scrubber-ticks span:first-child {
+  transform: none;
+}
+
+/* ---------- Nút đánh dấu sự kiện ---------- */
+.event-button {
+  height: 34px;
+  padding: 0 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 2px solid var(--event-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.event-button.recording {
+  color: #fff;
+  background: #be123c;
+  border-color: #be123c;
+}
+
+.playback .frame-info {
+  margin-left: auto;
+}
+
+.scrubber-keyframe {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  background: var(--sidebar-bg);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* Tay nắm ở hai đầu dải để kéo chỉnh thời gian */
+.segment-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.segment-handle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 3px;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--sidebar-bg);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.handle-start {
+  left: -4px;
+}
+
+.handle-end {
+  right: -4px;
+}
+
+.scrubber-segment:hover .segment-handle::after,
+.scrubber-segment.selected .segment-handle::after {
+  opacity: 0.85;
+}
+
+@media (hover: none) {
+  .segment-handle::after {
+    opacity: 0.85;
+  }
+}
+
+/* ---------- Danh sách sự kiện ---------- */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.event-list-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0.25rem 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.event-list-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #5f7f7c;
+}
+
+.event-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 200px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.event-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+.event-row.selected {
+  background: #f0fdfa;
+}
+
+.event-row-main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0.2rem 0;
+  font: inherit;
+  font-size: 0.8rem;
+  text-align: left;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.event-row-range {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.event-row-note {
+  font-size: 0.75rem;
+  color: #92400e;
+}
+
+/* ---------- Cây folder trong danh sách video ---------- */
+.tree-section + .tree-section {
+  margin-top: 0.25rem;
+}
+
+.tree-folder {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.45rem 0.5rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--sidebar-bg);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tree-folder:hover {
+  background: var(--content-bg);
+}
+
+.tree-caret {
+  width: 0.8rem;
+  font-size: 0.7rem;
+  color: #5f7f7c;
+}
+
+.tree-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.tree-count {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #5f7f7c;
+}
+
+.video-list-group {
+  margin: 0 0 0.25rem;
+  padding: 0 0 0 0.8rem;
+  list-style: none;
+}
+
+/* ---------- Panel GT của video ---------- */
+.labeling-page.gt-open {
+  margin-right: 400px;
+}
+
+.gt-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: var(--card-bg);
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 24px rgba(4, 47, 46, 0.08);
+}
+
+.gt-drawer-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem 0.75rem;
+}
+
+.gt-drawer-sub {
+  flex: 1;
+  font-size: 0.78rem;
+  color: #5f7f7c;
+}
+
+.gt-drawer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.gt-tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.gt-tab {
+  padding: 0.3rem 0.75rem;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.gt-tab.active {
+  background: #ccfbf1;
+  border-color: #99f6e4;
+}
+
+.gt-drawer-note {
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  color: #92400e;
+  background: #fffbeb;
+}
+
+.gt-drawer-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 0;
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+}
+
+.gt-drawer-body .gt-drawer-note {
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+}
+
+.gt-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.gt-issues {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+}
+
+.gt-section-title {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #5f7f7c;
+}
+
+.gt-ranges {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+}
+
+.gt-ranges li + li {
+  margin-top: 0.2rem;
+}
+
+.gt-frame-link {
+  padding: 0;
+  font: inherit;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  color: var(--sidebar-active);
+  background: none;
+  border: none;
+  text-decoration: underline dotted;
+  cursor: pointer;
+}
+
+.gt-frame-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.gt-frame-chip {
+  min-width: 2.4rem;
+  padding: 0.15rem 0.4rem;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--text);
+  background: #f0fdfa;
+  border: 1px solid #d5e6e3;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.gt-frame-chip:hover {
+  border-color: var(--sidebar-active);
+}
+
+.gt-frame-chip.keyframe {
+  font-weight: 700;
+  border-color: #99d5cf;
+}
+
+.gt-json-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.gt-summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.gt-summary dt {
+  color: #5f7f7c;
+}
+
+.gt-summary dd {
+  margin: 0;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-weight: 600;
+  text-align: right;
+}
+
+.gt-field-help {
+  margin: -0.4rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #5f7f7c;
+}
+
+.gt-json {
+  flex: 1;
+  margin: 0;
+  padding: 0.75rem;
+  overflow: auto;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #ccfbf1;
+  background: #0f2f2d;
+  border-radius: 8px;
+}
+
+@media (max-width: 1100px) {
+  .labeling-page.gt-open {
+    margin-right: 0;
+  }
+
+  .gt-drawer {
+    width: min(400px, 100%);
+  }
+}
+
+/* ---------- Tiến độ gán nhãn của từng video ---------- */
+.video-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.video-item-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.progress-box {
+  position: relative;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.1rem;
+  background: var(--card-bg);
+  border: 2px solid #94a3b8;
+  border-radius: 4px;
+}
+
+/* Đang label: tô nửa dưới */
+.progress-box.progress-doing {
+  border-color: #d97706;
+  background: linear-gradient(to top, #fbbf24 50%, var(--card-bg) 50%);
+}
+
+/* Đã label: nền xanh có dấu tick */
+.progress-box.progress-done {
+  background: var(--sidebar-active);
+  border-color: var(--sidebar-active);
+}
+
+.progress-box.progress-done::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Hoàn thành không có event: ô xám đậm có gạch ngang trắng (khác tick xanh của hoàn thành có event) */
+.progress-box.progress-skip {
+  background: #64748b;
+  border-color: #64748b;
+}
+
+.progress-box.progress-skip::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 5px;
+  height: 2px;
+  background: #fff;
+}
+
+.progress-text {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.progress-text.progress-todo {
+  color: #64748b;
+}
+
+.progress-text.progress-doing {
+  color: #b45309;
+}
+
+.progress-text.progress-done {
+  color: #0f766e;
+}
+
+.progress-text.progress-skip {
+  color: #475569;
+}
+
+/* Chờ xác nhận: ô viền tím, tô nửa dưới tím nhạt (auto label đã gán, người chưa duyệt) */
+.progress-box.progress-review {
+  border-color: #7c3aed;
+  background: linear-gradient(to top, #c4b5fd 50%, var(--card-bg) 50%);
+}
+
+.progress-text.progress-review {
+  color: #6d28d9;
+}
+
+.labeling-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem 1.5rem;
+}
+
+.labeling-evaluate {
+  margin-left: auto;
+}
+
+.status-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.status-check {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.status-check:hover {
+  background: var(--content-bg);
+}
+
+.status-check input {
+  margin: 0;
+  accent-color: var(--sidebar-active);
+}
+
+.status-check-count {
+  margin-left: auto;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.72rem;
+  color: #5f7f7c;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.done-button.active {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+/* ---------- Video đang chuyển định dạng / không phát được ---------- */
+.proxy-title {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  color: var(--sidebar-bg);
+}
+
+.video-play-error {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(15, 47, 45, 0.9);
+}
+
+/* ---------- Nút auto label ---------- */
+.autolabel-button {
+  color: #6d28d9;
+  border-color: #ddd6fe;
+}
+
+.autolabel-button:hover {
+  background: #f5f3ff;
+}
+
+/* Chọn model cho auto label, đứng ngay sau nút */
+.autolabel-model {
+  padding: 0.4rem 0.5rem;
+  font: inherit;
+  font-size: 0.82rem;
+  color: #6d28d9;
+  background: var(--card-bg);
+  border: 1px solid #ddd6fe;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.autolabel-model:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+/* Đang chạy: tô nền tím theo phần trăm tiến độ */
+.autolabel-button.running {
+  cursor: progress;
+  background: linear-gradient(to right, #ede9fe var(--progress, 0%), var(--card-bg) var(--progress, 0%));
+}
+
+.ai-badge {
+  padding: 0.05rem 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #6d28d9;
+  background: #ede9fe;
+  border-radius: 999px;
+}
+
+.event-list-hint.auto-hint {
+  color: #6d28d9;
+}

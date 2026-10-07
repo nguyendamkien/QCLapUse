@@ -1,0 +1,649 @@
+/* Trang Đánh giá: đánh giá model (bước 5) và báo cáo (bước 6) */
+.eval-page {
+  --muted-text: #5f7f7c;
+  --pass-bg: #ccfbf1;
+  --pass-text: #115e59;
+  --fail-bg: #ffe4e6;
+  --fail-text: #be123c;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.eval-page .muted {
+  color: var(--muted-text);
+}
+
+.eval-page a.btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.eval-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.eval-heading .page-title {
+  margin-bottom: 0;
+}
+
+.eval-project {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.eval-project select {
+  min-width: 200px;
+  padding: 0.45rem 0.65rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+}
+
+.eval-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* Chuyển giữa Đánh giá hiện tại và Lịch sử bằng thuộc tính hidden */
+.eval-layout[hidden],
+.eval-current[hidden] {
+  display: none;
+}
+
+/* ---------- Đánh giá hiện tại: form rồi kết quả ngay bên dưới ---------- */
+.eval-current {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.current-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eval-side,
+.eval-main,
+.run-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.eval-card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sidebar-bg);
+}
+
+.eval-sub-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.eval-help {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted-text);
+}
+
+.eval-error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--fail-text);
+}
+
+/* ---------- Form chạy đánh giá ---------- */
+.card.eval-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.eval-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.82rem;
+}
+
+.eval-field input {
+  padding: 0.4rem 0.6rem;
+  font: inherit;
+  font-size: 0.86rem;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+}
+
+.eval-field input[type="file"] {
+  padding: 0.3rem;
+}
+
+.eval-details summary {
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--sidebar-bg);
+}
+
+.eval-params {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+/* ---------- Danh sách lượt ---------- */
+.run-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.run-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.run-item:hover {
+  background: var(--content-bg);
+}
+
+.run-item.active {
+  background: #e6fffa;
+  border-color: var(--sidebar-active);
+}
+
+.run-item-name {
+  font-size: 0.86rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.run-item-meta {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.eval-placeholder {
+  color: var(--muted-text);
+}
+
+/* ---------- Chi tiết lượt ---------- */
+.card.run-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.run-meta {
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted-text);
+}
+
+.run-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.9rem;
+}
+
+.card.metric-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 1.2rem;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+}
+
+.metric-value {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--sidebar-bg);
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-status {
+  align-self: flex-start;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted-text);
+  background: var(--content-bg);
+  border-radius: 999px;
+}
+
+.metric-status.pass {
+  color: var(--pass-text);
+  background: var(--pass-bg);
+}
+
+.metric-status.fail {
+  color: var(--fail-text);
+  background: var(--fail-bg);
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+}
+
+.card.eval-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.eval-warnings p {
+  margin: 0;
+}
+
+.eval-warnings ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.eval-warnings summary {
+  cursor: pointer;
+}
+
+.eval-two {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 1rem;
+}
+
+/* ---------- Bảng ---------- */
+.confusion {
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.confusion th,
+.confusion td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.confusion th {
+  font-weight: 500;
+  text-align: left;
+  color: var(--muted-text);
+}
+
+.confusion td {
+  min-width: 4.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.confusion td.hit {
+  color: var(--pass-text);
+  background: #f0fdfa;
+}
+
+.confusion td.miss {
+  color: var(--fail-text);
+  background: #fff5f6;
+}
+
+.eval-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.eval-table th {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--muted-text);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.eval-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.eval-table tr:last-child td {
+  border-bottom: none;
+}
+
+.eval-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.videos-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.only-errors {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+}
+
+.cell-video {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.cell-wrong {
+  font-weight: 600;
+  color: var(--fail-text);
+}
+
+.row-ok td {
+  color: var(--muted-text);
+}
+
+.tag-warn {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 999px;
+}
+
+.cell-frames {
+  white-space: normal;
+}
+
+.frame-chip {
+  display: inline-block;
+  margin: 0 0.2rem 0.2rem 0;
+  padding: 0.05rem 0.4rem;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.74rem;
+  color: var(--sidebar-bg);
+  text-decoration: none;
+  background: var(--content-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.frame-chip:hover {
+  border-color: var(--sidebar-active);
+}
+
+.review-select,
+.note-input {
+  padding: 0.25rem 0.4rem;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid #d5e6e3;
+  border-radius: 6px;
+}
+
+.review-select.review-unreviewed {
+  border-color: #fbbf24;
+}
+
+.note-input {
+  width: 160px;
+}
+
+@media (max-width: 1100px) {
+  .eval-layout,
+  .eval-two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Các bước trong form chạy đánh giá ---------- */
+.eval-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.eval-step-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.model-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.model-row select {
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.86rem;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+}
+
+.model-meta {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.model-add {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.model-add input {
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.84rem;
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+}
+
+.class-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.8rem;
+  font-size: 0.82rem;
+}
+
+.class-list.scroll {
+  max-height: 150px;
+  padding: 0.4rem 0.5rem;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.class-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.class-option input {
+  accent-color: var(--sidebar-active);
+}
+
+.job-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--muted-text);
+}
+
+.job-progress .meter-track {
+  height: 8px;
+  overflow: hidden;
+  background: #e2efed;
+  border-radius: 4px;
+}
+
+.job-progress .meter-fill {
+  display: block;
+  height: 100%;
+  background: var(--sidebar-active);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+/* ---------- Đầu trang, form chạy, tab ---------- */
+.eval-heading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+.run-form-wrap .eval-form {
+  max-width: 560px;
+}
+
+.run-status {
+  margin-left: 0.6rem;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  vertical-align: middle;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 999px;
+}
+
+.run-status.approved {
+  color: var(--pass-text);
+  background: var(--pass-bg);
+}
+
+.eval-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.eval-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: -2px;
+  padding: 0.55rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.eval-tab:hover {
+  color: var(--text);
+}
+
+.eval-tab.active {
+  font-weight: 600;
+  color: var(--sidebar-bg);
+  border-bottom-color: var(--sidebar-active);
+}
+
+.eval-tab:focus-visible {
+  outline: 2px solid var(--sidebar-active);
+  outline-offset: -2px;
+}
+
+.tab-count {
+  padding: 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted-text);
+  background: var(--content-bg);
+  border-radius: 999px;
+}
+
+.tab-count.warn {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.link-button {
+  padding: 0;
+  font: inherit;
+  color: var(--sidebar-active);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

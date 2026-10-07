@@ -1,0 +1,382 @@
+/* Màu ba đường xu hướng: ba màu đầu của bảng màu tham chiếu (dataviz), đã chạy validate_palette
+   trên nền trắng, mọi cặp đều phân biệt được với người mù màu. F1 (aqua) tương phản dưới 3:1 nên
+   có nhãn giá trị ở điểm cuối và bảng số liệu đi kèm. */
+.eval-page {
+  --series-precision: #2a78d6;
+  --series-recall: #eb6834;
+  --series-f1: #1baf7a;
+  --ink-muted: #5f7f7c;
+  --grid: #e2efed;
+}
+
+.report-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+/* ---------- Văn bản báo cáo ---------- */
+.card.report-doc {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 980px;
+  padding: 1.75rem 2rem;
+}
+
+.report-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.report-kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sidebar-active);
+}
+
+.report-title {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--sidebar-bg);
+}
+
+.report-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.report-status {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.report-status.approved {
+  color: #115e59;
+  background: #ccfbf1;
+}
+
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.report-section h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--sidebar-bg);
+}
+
+.report-table {
+  max-width: 640px;
+}
+
+.delta-up {
+  color: #115e59;
+  font-weight: 600;
+}
+
+.delta-down {
+  color: #be123c;
+  font-weight: 600;
+}
+
+.delta-flat {
+  color: var(--ink-muted);
+}
+
+.report-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+.report-counts strong {
+  color: var(--text);
+}
+
+.count-warn,
+.count-warn strong {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.cell-note {
+  max-width: 260px;
+  white-space: normal;
+  color: var(--ink-muted);
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.report-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.report-note textarea {
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text);
+  resize: vertical;
+  background: #fff;
+  border: 1px solid #b7e4de;
+  border-radius: 8px;
+}
+
+.report-note textarea:disabled {
+  background: var(--content-bg);
+}
+
+.report-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.row-active td {
+  font-weight: 600;
+  background: #f0fdfa;
+}
+
+/* ---------- Biểu đồ xu hướng ---------- */
+.trend {
+  position: relative;
+  max-width: 720px;
+}
+
+.trend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-line {
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  vertical-align: middle;
+}
+
+.legend-line.series-precision {
+  background: var(--series-precision);
+}
+
+.legend-line.series-recall {
+  background: var(--series-recall);
+}
+
+.legend-line.series-f1 {
+  background: var(--series-f1);
+}
+
+.legend-target {
+  height: 0;
+  border-top: 2px dashed #94a3b8;
+}
+
+.trend-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid-line {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.target-line {
+  stroke: #94a3b8;
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.target-text {
+  font-size: 10px;
+  fill: #64748b;
+}
+
+.axis-text {
+  font-size: 11px;
+  fill: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.axis-active {
+  font-weight: 700;
+  fill: var(--text);
+}
+
+.crosshair {
+  stroke: #94a3b8;
+  stroke-width: 1;
+}
+
+.series-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Viền trắng 2px quanh điểm để các điểm chồng nhau vẫn tách được */
+.series-dot {
+  stroke: var(--card-bg);
+  stroke-width: 2;
+}
+
+.series-precision .series-line {
+  stroke: var(--series-precision);
+}
+
+.series-precision .series-dot {
+  fill: var(--series-precision);
+}
+
+.series-recall .series-line {
+  stroke: var(--series-recall);
+}
+
+.series-recall .series-dot {
+  fill: var(--series-recall);
+}
+
+.series-f1 .series-line {
+  stroke: var(--series-f1);
+}
+
+.series-f1 .series-dot {
+  fill: var(--series-f1);
+}
+
+/* Nhãn chữ dùng màu chữ, không dùng màu của đường */
+.end-label {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.hit-area {
+  fill: transparent;
+  cursor: crosshair;
+}
+
+.trend-tooltip {
+  position: absolute;
+  top: 1.6rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 240px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.78rem;
+  pointer-events: none;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(4, 47, 46, 0.12);
+  transform: translateX(-50%);
+}
+
+.trend-tooltip strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trend-table summary {
+  font-size: 0.82rem;
+  cursor: pointer;
+  color: var(--sidebar-bg);
+}
+
+.trend-table table {
+  margin-top: 0.5rem;
+  max-width: 640px;
+}
+
+/* ---------- Bản in / PDF ---------- */
+.print-only {
+  display: none;
+}
+
+@media print {
+  body:has(.eval-page) .sidebar,
+  .eval-page .no-print,
+  .eval-page .report-note,
+  .eval-page .trend-table {
+    display: none !important;
+  }
+
+  body:has(.eval-page) .app-content {
+    margin: 0;
+    padding: 0;
+  }
+
+  body:has(.eval-page) {
+    background: #fff;
+  }
+
+  .eval-page .print-only {
+    display: block;
+  }
+
+  .card.report-doc {
+    max-width: none;
+    padding: 0;
+    border: none;
+  }
+
+  .report-section {
+    break-inside: avoid;
+  }
+}
